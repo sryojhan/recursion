@@ -1,0 +1,111 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('./fonts/Poppins-Regular.ttf');
+
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('./fonts/Poppins-Medium.ttf');
+
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('./fonts/Poppins-Light.ttf');
+
+    font-weight: 300;
+}
+
+
+body {
+
+    padding: 0;
+    margin: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    background-color: #151515;
+    color: white;
+
+    font-family: 'Poppins', monospace;
+}
+
+
+.main-fib-container {
+
+    box-sizing: border-box;
+    padding: 10px;
+
+    aspect-ratio: 1;
+
+    width: 100%;
+
+    display: flex;
+}
+
+
+.fib-container {
+
+    display: flex;
+    flex: 1;
+
+    gap: 3px;
+}
+
+.fib-container.left {
+
+    flex-direction: row-reverse;
+}
+
+.fib-container.right {
+    flex-direction: row;
+
+}
+
+.fib-container.up {
+    flex-direction: column-reverse;
+}
+
+.fib-container.down {
+    flex-direction: column;
+
+}
+
+
+.fib-div {
+
+    aspect-ratio: 1;
+
+    flex: 1;
+    background-color: #707070;
+    color: black;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.left>.fib-div {
+
+    background-color: green;
+}
+
+.right>.fib-div {
+
+    background-color: yellow;
+}
+
+.down>.fib-div {
+
+    background-color: red;
+}
+
+.up>.fib-div {
+
+    background-color: blue;
+}
