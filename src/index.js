@@ -52,7 +52,7 @@ const CreateContainer = function (n, previous) {
     const container = document.createElement('div');
     container.classList.add('fib-container');
     container.classList.add(direction.Get());
-    container.style.flex = n.toString(); 
+    container.style.flex = n.toString();
 
     const elem = CreateElement(n);
 
@@ -79,9 +79,7 @@ const CreateNewFibonacciElement = function () {
         mainElement.classList.add('even');
 
     }
-    if (currentFibonacciElement === fibonacciData.length - 1) {
-
-
+    if (currentFibonacciElement === fibonacciData.length - 5) {
 
         DuplicateFibonacciSequence();
 
@@ -106,12 +104,28 @@ const DuplicateFibonacciSequence = function () {
     FibonacciArray(n, fibonacciData);
 }
 
+const CalculateAspectRatio = function (n) {
 
+    if (n % 2 === 0) {
+
+        const num = fibonacciData[n + 1];
+        const den = fibonacciData[n];
+
+        return `${num}/${den}`;
+    } else {
+
+        const num = fibonacciData[n];
+        const den = fibonacciData[n + 1];
+
+        return `${num}/${den}`;
+    }
+}
 
 const AppendElement = function () {
 
-
     mainElement.append(lastContainer);
+    mainElement.style.aspectRatio = CalculateAspectRatio(currentFibonacciElement);
+
     mainElement.classList.toggle('even');
 
     if (currentFibonacciElement > 10) {

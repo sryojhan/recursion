@@ -45,21 +45,18 @@ body {
 
 .main-fib-container {
 
+    display: flex;
     padding: 15px;
     box-sizing: border-box;
-
+    
+    width: auto;
     height: 100vmin;
-    aspect-ratio: 2/3;
-
-    display: flex;
-
 }
 
 .main-fib-container.even {
 
-    height: auto;
     width: 100vmin;
-    aspect-ratio: 5/3;
+    height: auto;
 }
 
 
