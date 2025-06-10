@@ -32,19 +32,23 @@ body {
     color: white;
 
     font-family: 'Poppins', monospace;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
 .main-fib-container {
 
+    padding: 15px;
     box-sizing: border-box;
-    padding: 10px;
 
-    aspect-ratio: 1;
-
-    width: 100%;
+    width: 100vmin;
+    height: 100vmin;
 
     display: flex;
+
 }
 
 
@@ -87,25 +91,50 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    min-width: 0;
+    min-height: 0;
+
+    animation: reveal .3s ease-out;
 }
 
 
 .left>.fib-div {
 
-    background-color: green;
+    background-color: #A8D5BA ;
 }
 
 .right>.fib-div {
 
-    background-color: yellow;
+    background-color: #FFF2B2 ;
 }
 
 .down>.fib-div {
 
-    background-color: red;
+    background-color: #F2B5B5 ;
 }
 
 .up>.fib-div {
 
-    background-color: blue;
+    background-color: #BFD8F5 ;
+}
+
+
+@keyframes reveal {
+    
+    0%{
+
+        transform: scale(0);
+    }
+
+    90%{
+
+        transform: scale(1.1);
+    }
+
+    100%{
+
+        transform: scale(1);
+    }
+
 }

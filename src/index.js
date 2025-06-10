@@ -3,13 +3,13 @@ import "./styles.css"
 import { FibonacciArray } from "./scripts/fibonacci"
 
 
-const n = 7;;
+const n = 15;
 const fibonacciData = FibonacciArray(n);
 
 
 const direction = (function () {
 
-    let dir = 0;
+    let dir = 3;
     const names = ["up", "left", "down", "right"];
 
 
@@ -58,9 +58,31 @@ const CreateContainer = function (n, previous) {
     return container;
 }
 
-const BuildFibonacciBoard = function () {
 
-    let lastContainer = null;
+let lastContainer = null;
+let currentFibonacciElement = 0;
+
+const mainElement = document.querySelector('.main-fib-container');
+
+const CreateNewFibonacciElement = function () {
+
+    if (++currentFibonacciElement === 1) {
+
+        lastContainer = CreateContainer(currentFibonacciElement, null);
+    }
+    else {
+        lastContainer = CreateContainer(fibonacciData[currentFibonacciElement], lastContainer);
+    }
+
+    mainElement.append(lastContainer);
+}
+
+
+
+const BuildFibonacciBoard = function (n) {
+
+
+    console.log(fibonacciData);
 
     fibonacciData.forEach((value, idx) => {
 
@@ -75,5 +97,14 @@ const BuildFibonacciBoard = function () {
     });
 
 
-    document.querySelector('main-fib-container').append(lastContainer);
+    document.querySelector('.main-fib-container').append(lastContainer);
 }
+
+
+//BuildFibonacciBoard();
+
+
+window.addEventListener('click', () => {
+
+    CreateNewFibonacciElement();
+})
