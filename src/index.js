@@ -19,7 +19,12 @@ const direction = (function () {
         return names[dir];
     }
 
-    return { Get };
+    const Reset = function() {
+
+        dir = 3;
+    }
+
+    return { Get, Reset};
 })();
 
 
@@ -66,7 +71,19 @@ const mainElement = document.querySelector('.main-fib-container');
 
 const CreateNewFibonacciElement = function () {
 
+    if(currentFibonacciElement === fibonacciData.length - 1){
+
+        mainElement.innerHTML = "";
+        currentFibonacciElement = 0;
+        lastContainer = null;
+        direction.Reset();
+        mainElement.classList.add('even');
+        return;
+    }
+
     if (++currentFibonacciElement === 1) {
+
+        console.log(currentFibonacciElement);
 
         lastContainer = CreateContainer(currentFibonacciElement, null);
     }
@@ -75,36 +92,22 @@ const CreateNewFibonacciElement = function () {
     }
 
     mainElement.append(lastContainer);
+    mainElement.classList.toggle('even');
 }
 
-
-
-const BuildFibonacciBoard = function (n) {
-
-
-    console.log(fibonacciData);
-
-    fibonacciData.forEach((value, idx) => {
-
-        if (idx === 0) return;
-        if (idx === 1) {
-
-            lastContainer = CreateContainer(value, null);
-            return;
-        }
-
-        lastContainer = CreateContainer(value, lastContainer);
-    });
-
-
-    document.querySelector('.main-fib-container').append(lastContainer);
-}
 
 
 //BuildFibonacciBoard();
 
 
 window.addEventListener('click', () => {
+
+    CreateNewFibonacciElement();
+})
+
+
+
+window.addEventListener('touch', () => {
 
     CreateNewFibonacciElement();
 })
