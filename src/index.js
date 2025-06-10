@@ -3,7 +3,7 @@ import "./styles.css"
 import { FibonacciArray } from "./scripts/fibonacci"
 
 
-const n = 15;
+let n = 16;
 const fibonacciData = FibonacciArray(n);
 
 
@@ -19,12 +19,12 @@ const direction = (function () {
         return names[dir];
     }
 
-    const Reset = function() {
+    const Reset = function () {
 
         dir = 3;
     }
 
-    return { Get, Reset};
+    return { Get, Reset };
 })();
 
 
@@ -52,7 +52,7 @@ const CreateContainer = function (n, previous) {
     const container = document.createElement('div');
     container.classList.add('fib-container');
     container.classList.add(direction.Get());
-    container.style.flex = n.toString();
+    container.style.flex = n.toString(); 
 
     const elem = CreateElement(n);
 
@@ -71,19 +71,23 @@ const mainElement = document.querySelector('.main-fib-container');
 
 const CreateNewFibonacciElement = function () {
 
-    if(currentFibonacciElement === fibonacciData.length - 1){
+    if (currentFibonacciElement > 35) {
 
-        mainElement.innerHTML = "";
         currentFibonacciElement = 0;
         lastContainer = null;
-        direction.Reset();
+        mainElement.innerHTML = "";
         mainElement.classList.add('even');
-        return;
+
+    }
+    if (currentFibonacciElement === fibonacciData.length - 1) {
+
+
+
+        DuplicateFibonacciSequence();
+
     }
 
     if (++currentFibonacciElement === 1) {
-
-        console.log(currentFibonacciElement);
 
         lastContainer = CreateContainer(currentFibonacciElement, null);
     }
@@ -91,8 +95,39 @@ const CreateNewFibonacciElement = function () {
         lastContainer = CreateContainer(fibonacciData[currentFibonacciElement], lastContainer);
     }
 
+
+    AppendElement();
+}
+
+
+const DuplicateFibonacciSequence = function () {
+
+    n *= 2;
+    FibonacciArray(n, fibonacciData);
+}
+
+
+
+const AppendElement = function () {
+
+
     mainElement.append(lastContainer);
     mainElement.classList.toggle('even');
+
+    if (currentFibonacciElement > 10) {
+
+        const firstElem = document.querySelector('.fib-div');
+        firstElem.remove();
+
+        if (currentFibonacciElement === 11) {
+
+            const secondElem = document.querySelector('.fib-div');
+            secondElem.remove();
+
+        }
+
+    }
+
 }
 
 
